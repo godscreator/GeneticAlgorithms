@@ -1,4 +1,4 @@
-from Genetic.GeneticAlgorithm import *
+from Genetic.SingleObjectiveAlgorithms import *
 import random
 import math
 

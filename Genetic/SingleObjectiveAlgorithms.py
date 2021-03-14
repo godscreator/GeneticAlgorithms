@@ -1,6 +1,6 @@
 import random
 from abc import ABC, abstractmethod
-from typing import Callable, List
+from typing import Callable, List, Type
 
 
 class Gene(ABC):
@@ -201,7 +201,7 @@ class Selection:
 
 
 class GenePool:
-    def __init__(self, gene_type, population_size: int, mutation_rate: float = 0.1, crossover_rate: float = 1,
+    def __init__(self, gene_type: Gene, population_size: int, mutation_rate: float = 0.1, crossover_rate: float = 1,
                  select_func: Callable[[List[Gene], List[float], int], List[Gene]] = Selection.roulette_wheel):
         """
         Create a gene pool.
@@ -230,12 +230,7 @@ class GenePool:
         for i in range(self.population_size):
             self.population.append(self.gene_type.create_random())
         # evaluate
-        fitness = []
-        for i in self.population:
-            fitness.append(i.calculate_fitness())
-        sum_fitness = sum(fitness)
-        normalized_fitness = [i / sum_fitness for i in fitness]
-        self.fitness = normalized_fitness
+        self.fitness = GenePool.evaluate(self.population)
 
     def generate(self) -> None:
         """
