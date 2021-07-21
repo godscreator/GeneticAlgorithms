@@ -43,16 +43,18 @@ Next is 'GenePool'. Gene pool initializes and generates next generation of genes
 ```Python
 pool = GenePool(X, population_size, mutation_rate=0.05, crossover_rate=1, select_func=Selection.get_tournament(tournament_size=5))
 pool.initialize_population()
+population = pool.get_population();
 while gen_count<max_gen_count:
-    next_gen = pool.get_population()
+    next_gen = pool.generate()
+    population = pool.get_population()
 ```
 ***
 ## Examples
 ### TSP (single objective)
 #### solving 
-![Alt text](Example_TSP/assets/travelling_salesman_solved_sample.png?raw=true "Solving Sample image")
-#### solved
 ![Alt text](Example_TSP/assets/travelling_salesman_solving_sample.png?raw=true "Solved Sample image")
+#### solved
+![Alt text](Example_TSP/assets/travelling_salesman_solved_sample.png?raw=true "Solving Sample image")
 
 ### Schaffer's Study (multi objective)
 #### solving 
