@@ -43,7 +43,7 @@ Next is 'GenePool'. Gene pool initializes and generates next generation of genes
 ```Python
 pool = GenePool(X, population_size, mutation_rate=0.05, crossover_rate=1, select_func=Selection.get_tournament(tournament_size=5))
 pool.initialize_population()
-population = pool.get_population();
+population = pool.get_population()
 while gen_count<max_gen_count:
     next_gen = pool.generate()
     population = pool.get_population()
